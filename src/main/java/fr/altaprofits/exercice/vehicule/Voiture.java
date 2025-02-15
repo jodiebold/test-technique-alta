@@ -1,23 +1,13 @@
 package fr.altaprofits.exercice.vehicule;
 
 import fr.altaprofits.exercice.Point;
+import fr.altaprofits.exercice.caracteristique.Roulant;
 
-public class Voiture {
+public class Voiture extends Vehicule implements Roulant {
     private static Integer idIndex = 0;
-    private final String refVoiture;
-    private Point position;
 
     public Voiture() {
-        position = new Point(0, 0);
-        refVoiture = "V-" + ++idIndex;
-    }
-
-    public void seDeplace(int x, int y) {
-        roule(new Point(x, y));
-    }
-
-    private void roule(Point destination) {
-        System.out.printf("Véhicule de type voiture (Ref : %s), se déplace de la position %s vers %s\n", refVoiture, position, destination);
-        position = destination;
+        super();
+        ref = refPrefix + ++idIndex;
     }
 }
