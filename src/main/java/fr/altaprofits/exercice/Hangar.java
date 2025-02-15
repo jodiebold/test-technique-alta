@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -54,10 +55,7 @@ public class Hangar extends Batiment {
 	}
 
 	private int nombreDeVehicule(Class<?> type) {
-		return (int) this.sections.stream()
-		.flatMap(section -> section.getVehicules().stream())
-		.filter(type::isInstance)
-		.count();
+		return this.sections.stream().mapToInt(section -> Utils.nombreDElements(section.getVehicules(), type)).sum();
 	}
 
 	public void imprimerToutDansConsole() {

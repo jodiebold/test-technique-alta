@@ -22,16 +22,12 @@ public class Ferme extends Batiment {
 
     @Override
     public int nombreDelementsVolants() {
-        return nombreDAnimaux(Volant.class);
+        return Utils.nombreDElements(this.animaux, Volant.class);
     }
 
     @Override
     public int nombreDelementsNavigants() {
-        return nombreDAnimaux(Navigant.class);
+        return Utils.nombreDElements(this.animaux, Navigant.class);
     }
-
-    private int nombreDAnimaux(Class<?> type) {
-        return (int) this.animaux.stream().filter(type::isInstance).count();
-	}
 
 }
