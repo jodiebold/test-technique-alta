@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 import fr.altaprofits.exercice.vehicule.Avion;
 import fr.altaprofits.exercice.vehicule.Helicoptere;
+import fr.altaprofits.exercice.vehicule.Hydravion;
 import fr.altaprofits.exercice.vehicule.JetSki;
 import fr.altaprofits.exercice.vehicule.Moto;
 
@@ -17,12 +18,16 @@ public class Application {
         Avion avion2 = new Avion();
         Helicoptere helico1 = new Helicoptere();
         JetSki jetSki1 = new JetSki();
+        Hydravion hydravion1 = new Hydravion();
+        Hydravion hydravion2 = new Hydravion();
 
         hangar.entre(moto1);
         hangar.entre(avion1);
         hangar.entre(avion2);
         hangar.entre(helico1);
         hangar.entre(jetSki1);
+        hangar.entre(hydravion1);
+        hangar.entre(hydravion2);
 
         hangar.imprimerToutDansConsole();
 
@@ -36,6 +41,10 @@ public class Application {
         avion2.seDeplace(25, 55);
         helico1.seDeplace(23, 11);
         jetSki1.seDeplace(3, 9);
+        hydravion1.seDeplace(5, 2);
+        hydravion1.seDeplace(6, 3);
+        hydravion2.seDeplace(10, 0);
+        hydravion2.seDeplace(15, 10);
 
         try {
             hangar.imprimerToutDansFichier(new File("vehicles.txt"));

@@ -2,7 +2,7 @@ package fr.altaprofits.exercice.vehicule;
 
 import fr.altaprofits.exercice.Point;
 
-public abstract class Vehicule {
+public class Vehicule {
 
     protected String refPrefix;
     protected String ref;
@@ -10,7 +10,7 @@ public abstract class Vehicule {
 
     public Vehicule() {
         position = new Point(0, 0);
-        refPrefix = this.getClass().getSimpleName().charAt(0) + "-";
+        refPrefix = this.getClass().getSimpleName().substring(0, 3) + "-";
     }
 
     public void seDeplace(int x, int y) {
