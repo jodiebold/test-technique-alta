@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Hangar {
+public class Hangar extends Batiment {
 	
 	private HashSet<Section> sections = new HashSet<>();
 
@@ -50,7 +50,14 @@ public class Hangar {
 	}
 
 	public int nombreDeVehiculeDansHangar() {
-		return this.sections.stream().map(s -> s.getVehicules().size()).reduce(0, (a, b) -> a + b);
+		return this.sections.stream().mapToInt(s -> s.getVehicules().size()).sum();
+	}
+
+	private int nombreDeVehicule(Class<?> type) {
+		return (int) this.sections.stream()
+		.flatMap(section -> section.getVehicules().stream())
+		.filter(type::isInstance)
+		.count();
 	}
 
 	public void imprimerToutDansConsole() {
@@ -70,5 +77,20 @@ public class Hangar {
 	public void imprimerToutDansFichier(File f) throws FileNotFoundException {
 		PrintStream printStream = new PrintStream(new FileOutputStream(f));
 		printStream.println(getVehiculesListMessage());
+	}
+
+	@Override
+	public int nombreDelementsRoulants() {
+		return nombreDeVehicule(Roulant.class);
+	}
+
+	@Override
+	public int nombreDelementsVolants() {
+		return nombreDeVehicule(Volant.class);
+	}
+
+	@Override
+	public int nombreDelementsNavigants() {
+		return nombreDeVehicule(Navigant.class);
 	}
 }

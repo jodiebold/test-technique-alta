@@ -3,6 +3,8 @@ package fr.altaprofits.exercice;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import fr.altaprofits.exercice.animal.Canard;
+import fr.altaprofits.exercice.animal.Poule;
 import fr.altaprofits.exercice.vehicule.Avion;
 import fr.altaprofits.exercice.vehicule.Helicoptere;
 import fr.altaprofits.exercice.vehicule.Hydravion;
@@ -10,7 +12,7 @@ import fr.altaprofits.exercice.vehicule.JetSki;
 import fr.altaprofits.exercice.vehicule.Moto;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Hangar hangar = new Hangar();
 
         Moto moto1 = new Moto();
@@ -30,6 +32,7 @@ public class Application {
         hangar.entre(hydravion2);
 
         hangar.imprimerToutDansConsole();
+        hangar.imprimerToutDansFichier(new File("vehicles.txt"));
 
         System.out.println("Nombre de v�hicule dans le hangar : " + hangar.nombreDeVehiculeDansHangar());
         System.out.println("Nombre de v�hicule dans l'a�roport : " + hangar.nombreDeVehiculesDansAeroport());
@@ -46,10 +49,21 @@ public class Application {
         hydravion2.seDeplace(10, 0);
         hydravion2.seDeplace(15, 10);
 
-        try {
-            hangar.imprimerToutDansFichier(new File("vehicles.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Ferme ferme = new Ferme();
+        Poule poule1 = new Poule();
+        Poule poule2 = new Poule();
+        Canard canard1 = new Canard();
+
+        ferme.entre(poule1);
+        ferme.entre(poule2);
+        ferme.entre(canard1);
+
+        Environnement environnement = new Environnement();
+        environnement.add(hangar);
+        environnement.add(ferme);
+        
+        System.out.println("Nombre d'éléments volants dans l'environnement: " + environnement.nombreDelementsVolants());
+        System.out.println("Nombre d'éléments roulants dans l'environnement: " + environnement.nombreDelementsRoulants());
+        System.out.println("Nombre d'éléments navigants dans l'environnement: " + environnement.nombreDelementsNavigants());
     }
 }
