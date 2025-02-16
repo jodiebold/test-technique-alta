@@ -1,6 +1,6 @@
 package fr.altaprofits.exercice.caracteristique;
 
-import fr.altaprofits.exercice.Point;
+public interface Volant extends Mobile {
 
-public interface Volant {
+    public void vole(int x, int y);
 }

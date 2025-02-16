@@ -1,4 +1,4 @@
-package fr.altaprofits.exercice;
+package fr.altaprofits.exercice.environnement;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,9 +6,6 @@ import java.util.Set;
 public class Environnement {
 
     private Set<Batiment> batiments = new HashSet<>();
-
-    public Environnement() {
-    }
 
     public int nombreDelementsVolants() {
         return this.batiments.stream().mapToInt(Batiment::nombreDelementsVolants).sum();

@@ -1,4 +1,4 @@
-package fr.altaprofits.exercice;
+package fr.altaprofits.exercice.environnement;
 
 public enum SectionType {
     AEROPORT, 

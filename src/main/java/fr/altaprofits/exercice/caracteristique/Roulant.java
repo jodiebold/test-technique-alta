@@ -1,7 +1,6 @@
 package fr.altaprofits.exercice.caracteristique;
 
-import fr.altaprofits.exercice.Point;
+public interface Roulant extends Mobile {
 
-public interface Roulant {
-
+    public void roule(int x, int y);
 }

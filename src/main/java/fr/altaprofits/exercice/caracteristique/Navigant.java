@@ -1,7 +1,6 @@
 package fr.altaprofits.exercice.caracteristique;
 
-import fr.altaprofits.exercice.Point;
+public interface Navigant extends Mobile {
 
-public interface Navigant {
-
+    public void navigue(int x, int y);
 }

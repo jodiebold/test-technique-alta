@@ -1,25 +1,17 @@
 package fr.altaprofits.exercice.vehicule;
 
-import fr.altaprofits.exercice.Point;
+import fr.altaprofits.exercice.ElementMobile;
+import fr.altaprofits.exercice.environnement.SectionType;
 
-public class Vehicule {
+public abstract class Vehicule extends ElementMobile {
 
-    protected String refPrefix;
-    protected String ref;
-    protected Point position;
+    protected SectionType sectionType;
 
-    public Vehicule() {
-        position = new Point(0, 0);
-        refPrefix = this.getClass().getSimpleName().substring(0, 3) + "-";
+    protected void seDeplace(int x, int y, String action) {
+        super.seDeplace(x, y, action, Vehicule.class.getSimpleName());
     }
 
-    public void seDeplace(int x, int y) {
-        Point destination = new Point(x, y);
-        System.out.printf(toString() + ", se d�place de la position %s vers %s\n", position, destination);
-        position = destination;
-    }
-
-    public String toString() {
-        return "Vehicule de type " + this.getClass().getSimpleName() + " (Ref : " + ref + ")";
+    public void setSectionType(SectionType sectionType) {
+       this.sectionType = sectionType;
     }
 }

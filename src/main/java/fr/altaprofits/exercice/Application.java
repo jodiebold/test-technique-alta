@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 
 import fr.altaprofits.exercice.animal.Canard;
 import fr.altaprofits.exercice.animal.Poule;
+import fr.altaprofits.exercice.environnement.Environnement;
+import fr.altaprofits.exercice.environnement.Ferme;
+import fr.altaprofits.exercice.environnement.Hangar;
 import fr.altaprofits.exercice.vehicule.Avion;
 import fr.altaprofits.exercice.vehicule.Helicoptere;
 import fr.altaprofits.exercice.vehicule.Hydravion;
@@ -32,7 +35,7 @@ public class Application {
         hangar.entre(hydravion2);
 
         hangar.imprimerToutDansConsole();
-        hangar.imprimerToutDansFichier(new File("vehicles.txt"));
+        hangar.imprimerToutDansFichier(new File("inventaire-vehicules.txt"));
 
         System.out.println("Nombre de v�hicule dans le hangar : " + hangar.nombreDeVehiculeDansHangar());
         System.out.println("Nombre de v�hicule dans l'a�roport : " + hangar.nombreDeVehiculesDansAeroport());
@@ -48,6 +51,7 @@ public class Application {
         hydravion1.seDeplace(6, 3);
         hydravion2.seDeplace(10, 0);
         hydravion2.seDeplace(15, 10);
+        moto1.seDeplace(4, 9);
 
         Ferme ferme = new Ferme();
         Poule poule1 = new Poule();
@@ -57,6 +61,11 @@ public class Application {
         ferme.entre(poule1);
         ferme.entre(poule2);
         ferme.entre(canard1);
+
+        ferme.imprimerToutDansConsole();
+        ferme.imprimerToutDansFichier(new File("inventaire-animaux.txt"));
+
+        poule1.seDeplace(1, 1);
 
         Environnement environnement = new Environnement();
         environnement.add(hangar);
